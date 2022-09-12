@@ -8,8 +8,8 @@ public class Main {
   static int[][] bombs;
   static int time = 1;
 
-  static int[] dy = { 0, 1, 0, -1 };
-  static int[] dx = { 1, 0, -1, 0 };
+  static int[] dy = { 0, 0, 1, 0, -1 };
+  static int[] dx = { 0, 1, 0, -1, 0 };
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -76,7 +76,7 @@ public class Main {
     for (int i = 0; i < r; i++) {
       for (int j = 0; j < c; j++) {
         if (bombs[i][j] == time) {
-          for (int k = 0; k < 4; k++) {
+          for (int k = 0; k < 5; k++) {
             int ny = i + dy[k];
             int nx = j + dx[k];
             if (0 <= ny && ny < r && 0 <= nx && nx < c) {
