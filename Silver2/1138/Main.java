@@ -5,25 +5,40 @@ import java.util.StringTokenizer;
 public class Main {
 
   static int n;
-  static int[] heights;
+  static int[] taller;
   static int[] answer;
 
   public static void main(String[] args) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringBuilder sb = new StringBuilder();
     StringTokenizer st;
 
     n = Integer.parseInt(br.readLine());
 
-    heights = new int[n + 1];
-    answer = new int[n + 1];
+    taller = new int[n];
+    answer = new int[n];
 
     st = new StringTokenizer(br.readLine());
-    for (int i = 1; i < n + 1; i++) {
-      heights[i] = Integer.parseInt(st.nextToken());
+    for (int i = 0; i < n; i++) {
+      taller[i] = Integer.parseInt(st.nextToken());
     }
 
-    for(int i = 1; i < n+ 1; i++) {
-        
+    for (int i = 0; i < n; i++) {
+      int count = 0;
+      for (int j = 0; j < n; j++) {
+        if (answer[j] == 0) {
+          if (taller[i] <= count) {
+            answer[j] = i + 1;
+            break;
+          }
+          count++;
+        }
+      }
     }
+
+    for (int i = 0; i < n; i++) {
+      sb.append(answer[i]).append(" ");
+    }
+    System.out.println(sb);
   }
 }
